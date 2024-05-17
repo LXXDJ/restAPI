@@ -1,0 +1,27 @@
+### 전체 포스트 조회
+GET http://localhost:8080/posts/posts
+
+### 코드로 포스트 조회
+GET http://localhost:8080/posts/posts/5
+
+### 신규 포스트 등록
+POST http://localhost:8080/posts/posts
+Content-Type: application/json
+
+{
+  "title": "제목6",
+  "content": "내용6",
+  "writer": "퇴계이황"
+}
+
+### 포스트 수정
+PUT http://localhost:8080/posts/posts/1
+Content-Type: application/json
+
+{
+  "title": "수정제목",
+  "content": "수정내용"
+}
+
+### 포스트 삭제
+DELETE http://localhost:8080/posts/posts/1

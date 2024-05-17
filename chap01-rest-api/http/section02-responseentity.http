@@ -1,4 +1,4 @@
-### 전체 회원 조회
+### 회원 목록 조회
 GET http://localhost:8080/entity/users
 
 ### 특정 회원 조회
@@ -25,4 +25,4 @@ Content-Type: application/json
 }
 
 ### 회원 정보 삭제
-DELETE http://localhost:8080/entity/users/1
+DELETE http://localhost:8080/entity/users/2

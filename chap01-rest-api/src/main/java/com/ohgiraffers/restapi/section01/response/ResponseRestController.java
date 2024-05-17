@@ -47,7 +47,9 @@ public class ResponseRestController {
         messageList.add(new Message(404, "페이지를 찾을 수 없습니다."));
         messageList.add(new Message(500, "개발자의 잘못입니다."));
 
-        return messageList.stream().collect(Collectors.toMap(Message::getHttpStatusCode, Message::getMessage));
+        return messageList.stream().collect(
+                Collectors.toMap(Message::getHttpStatusCode, Message::getMessage)
+        );
     }
 
     // 6. 파일 응답
