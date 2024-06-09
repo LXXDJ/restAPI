@@ -1,0 +1,43 @@
+### 회원가입
+POST http://localhost:8001/api/v1/members/signup
+Content-Type: application/json
+
+{
+  "memberId" : "user02",
+  "memberPassword": "pass02",
+  "memberName": "유저2"
+}
+
+### 로그인 테스트
+POST http://localhost:8001/api/v1/members/login
+Content-Type: application/json
+
+{
+  "memberId" : "user02",
+  "memberPassword": "pass02"
+}
+
+### 인증 되어야 하는 기능을 대상으로 테스트
+### 1. 토큰 값이 없거나 토큰이 잘 못 작성 된 경우 -> 인증 되지 않은 요청으로 처리
+GET http://localhost:8001/api/v1/members/test
+
+### 2. Access Token 유효한 경우 -> 인증 되어 필터 통과 후 정상 수행
+GET http://localhost:8001/api/v1/members/test
+Access-Token: Bearer eyJkYXRlIjoxNzE1MzA2ODIzODAzLCJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsIm1lbWJlcklkIjoidXNlcjAyIiwibWVtYmVyUm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcxNTMxMDQyM30.SvGMsxyFtdIiZt5odC8x-DvI9zjTUpzj1wem84h2DBZSOQOG0wH_c-n6q-NopBxvM_crO00s1UfRRTPWB1I_0w
+
+### 3. Access Token 유효하지 않고 Refresh Token 유효한 경우 (access token 시간 설정 변경 후 테스트)
+### access token은 만료되어 인증 되지 않은 요청으로 처리 되며 refresh token을 보내면 토큰이 재발급 되어 응답 되고 DB도 update 된다.
+GET http://localhost:8001/api/v1/members/test
+Refresh-Token: Bearer eyJkYXRlIjoxNzE1MzA3MTEzMjkxLCJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiJSZWZyZXNoVG9rZW4iLCJleHAiOjE3MTU5MTE5MTN9.iGkJLGiztoFJcBsDJst4jSYP6WXjSa13U58aRl2MS6cFObGlpa_0U1eB8MJQ4VUiDidQ82z8PXSIljvRgpCnzw
+
+### 4. Access Token은 유효하지만 권한이 없는 경우 -> 허가 되지 않은 요청 오류
+GET http://localhost:8001/api/v1/products-management?page=1
+Access-Token: Bearer eyJkYXRlIjoxNzE1MzA3NDMzNDQwLCJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsIm1lbWJlclJvbGUiOiJST0xFX1VTRVIiLCJtZW1iZXJJZCI6InVzZXIwMiIsImV4cCI6MTcxNTMxMTAzM30.lN6Qkynhhy4G8se6rV-PiUtRcJPhYil89Fp2LJmNRYUyH19xWDrQ791m-MUIadwaTSlblg5LXPBvvASaHyrxuw
+
+### 프로필 조회
+GET http://localhost:8001/api/v1/members/admin
+Access-Token: Bearer eyJkYXRlIjoxNzE1MzA5NTc3MjcyLCJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsIm1lbWJlclJvbGUiOiJST0xFX1VTRVIiLCJtZW1iZXJJZCI6InVzZXIwMiIsImV4cCI6MTcxNTMxMzE3N30.ljsyc1E5X-vdZ12AlDJWoXLcJGeEcFaApxRY0BIUp0Qv_zkXGigMVAuj36qkM9ebpC7D_1BjuuWvkDdjHIQXqw
+
+### 로그아웃
+POST http://localhost:8001/api/v1/members/logout
+Access-Token: Bearer eyJkYXRlIjoxNzE1MzEwMzczMzk4LCJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsIm1lbWJlclJvbGUiOiJST0xFX1VTRVIiLCJtZW1iZXJJZCI6InVzZXIwMiIsImV4cCI6MTcxNTMxMzk3M30.RSBA_4ZnXRAwyv2LKQvESDRVVuVIq9fo6BnyFBMIrFAnMOp4rZ6w1k8eEbrJplPUXM3kEZe756GdPQ-iwoSYzA

@@ -1,0 +1,17 @@
+### 주문 등록
+POST http://localhost:8001/api/v1/orders
+Content-Type: application/json
+Access-Token: Bearer eyJkYXRlIjoxNzE1NjU0NTU4NjMyLCJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsIm1lbWJlcklkIjoidXNlcjAyIiwibWVtYmVyUm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcxNTY1ODE1OH0.b71DVlMGXvUiS7fYlc-6TnsDpxUPHwRzMoYLxjhXOOyHgFXMh9Vp8x10MI8BDaXVIdxSorWiB4Sja1LqBZeNRg
+
+{
+  "productCode": 5,
+  "orderPhone": "010-1234-5678",
+  "orderEmail": "hello@gmail.com",
+  "orderReceiver": "받는이",
+  "orderAddress": "받는 주소",
+  "orderAmount": 2
+}
+
+### 주문 목록 조회
+GET http://localhost:8001/api/v1/members/user02/orders?page=1
+Access-Token: Bearer eyJkYXRlIjoxNzE1NjYwMDc4ODE2LCJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsIm1lbWJlclJvbGUiOiJST0xFX1VTRVIiLCJtZW1iZXJJZCI6InVzZXIwMiIsImV4cCI6MTcxNTY2MzY3OH0.PCHn1FACFIzFe8HdviDnNam-_cuhJu4eKLmyVlg0EZjyJsTQq4y9IIhq0NoxvZKIARlUsW-N7RpTaUsPsQGzEg
