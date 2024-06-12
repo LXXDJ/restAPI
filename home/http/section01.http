@@ -1,0 +1,17 @@
+### 문자열응답
+GET http://localhost:8080/response/hello
+
+### 기본자료형응답
+GET http://localhost:8080/response/random
+
+### Object 응답
+GET http://localhost:8080/response/message
+
+### List 응답
+GET http://localhost:8080/response/list
+
+### ImageFile응답
+GET http://localhost:8080/response/image
+
+### ResponseEntity응답
+GET http://localhost:8080/response/entity
